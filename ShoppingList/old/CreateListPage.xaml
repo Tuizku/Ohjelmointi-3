@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppingList.CreateListPage"
+             Title="CreateListPage">
+    <VerticalStackLayout>
+        <!-- Define the action buttons here -->
+        <HorizontalStackLayout>
+            <Button Text="+" Clicked="AddItem" />
+        </HorizontalStackLayout>
+        
+        <!-- List Layout -->
+        <VerticalStackLayout x:Name="listLayout" Spacing="10" Margin="10">
+            
+            <!-- Item Template Resource -->
+            <VerticalStackLayout.Resources>
+                <DataTemplate x:Key="itemTemplate">
+                    <Grid BackgroundColor="#512BD4" Padding="10" ColumnSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="50"/>
+                            <!--<ColumnDefinition Width="1*"/>-->
+                        </Grid.ColumnDefinitions>
+                        <Entry Grid.Column="0" Text="{Binding Name, Mode=TwoWay}"
+                               TextColor="White" FontSize="Medium"
+                               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                               TextChanged="ItemNameChanged"/>
+                        <Button Grid.Column="1" Text="ok"
+                                TextColor="Green" FontSize="Medium"
+                                BackgroundColor="LightGray"
+                                SizeChanged="Button_SizeChanged"
+                                Clicked="CheckButtonClicked"/>
+                        <Button Grid.Column="2" Text="de"
+                                TextColor="Red" FontSize="Medium"
+                                BackgroundColor="LightGray"
+                                SizeChanged="Button_SizeChanged"
+                                Clicked="DeleteButtonClicked"/>
+                    </Grid>
+                </DataTemplate>
+            </VerticalStackLayout.Resources>
+            <Label x:Name="test" Text="test"></Label>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
